@@ -1,0 +1,299 @@
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+}
+
+.card-slider-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  user-select: none;
+  width: 100%;
+}
+
+/* controls */
+.controls-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 15px;
+  padding: 0 30px;
+}
+
+.left,
+.right {
+  position: relative;
+  border: 1px solid #2e2e2e;
+  border-radius: 5px;
+  width: 35px;
+  height: 35px;
+}
+
+.left:hover,
+.right:hover {
+  cursor: pointer;
+  background-color: rgb(245, 245, 245);
+}
+
+.innerRight {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  width: 12px;
+}
+
+.innerRight::after,
+.innerRight::before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 2px;
+  right: -3px;
+  background-color: #000;
+}
+
+.innerRight::after {
+  top: -4px;
+  transform: rotate(45deg);
+}
+
+.innerRight::before {
+  top: 4px;
+  transform: rotate(-45deg);
+}
+
+.innerLeft {
+  position: absolute;
+  top: 50%;
+  right: 25%;
+  width: 12px;
+}
+
+.innerLeft::after,
+.innerLeft::before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 2px;
+  left: -3px;
+  background-color: #000;
+}
+
+.innerLeft::after {
+  top: -4px;
+  transform: rotate(-45deg);
+}
+
+.innerLeft::before {
+  top: 4px;
+  transform: rotate(45deg);
+}
+
+/* cards */
+.cards-wrapper {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  gap: 35px;
+  /* margin: 0 0 0 20px; */
+}
+
+.card {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  position: relative;
+  min-width: 245px;
+  height: 400px;
+  border-radius: 20px;
+  color: #fff;
+  z-index: 0;
+  filter: drop-shadow(7px 5px 8px rgba(0, 0, 0, 0.25));
+  margin: 25px 0;
+  transition: 0.15s;
+}
+
+.card:hover {
+  filter: drop-shadow(7px 5px 10px rgba(0, 0, 0, 0.4));
+}
+
+.cards-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.price {
+  font-weight: bold; /* change to semi bold? */
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 7px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #444;
+  font-size: 17px;
+}
+
+.button:hover {
+  background-color: rgb(245, 245, 245);
+}
+
+.card::after {
+  content: "";
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  z-index: -1;
+  background: linear-gradient(
+      0deg,
+      rgba(28, 28, 28, 0.2) 0%,
+      rgba(28, 28, 28, 0) 29.69%
+    ),
+    linear-gradient(
+      165.24deg,
+      rgba(28, 28, 28, 0.5) 5.13%,
+      rgba(28, 28, 28, 0) 40.62%
+    );
+}
+
+.contentWrapper {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  justify-content: space-between;
+  /* padding: 30px; */
+  height: 100%;
+  width: 100%;
+}
+
+.contentUpper,
+.contentLower {
+  padding: 30px;
+}
+
+.contentLower {
+  width: 100%;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+
+/* not sure if this works */
+.image div {
+  z-index: -1;
+}
+
+img {
+  z-index: -2;
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.card:last-of-type {
+  margin-right: 20px;
+}
+
+.card:first-of-type {
+  margin-left: 20px;
+}
+
+@media (min-width: 644px) {
+  .card-slider-container {
+    width: 100%;
+  }
+
+  .contentUpper,
+  .contentLower {
+    padding: 40px;
+  }
+
+  .card {
+    min-width: 300px;
+    height: 500px;
+    scroll-snap-align: start;
+  }
+
+  .card:first-of-type {
+    margin-left: 20px;
+  }
+
+  .button {
+    padding: 12px;
+    font-size: 19px;
+  }
+
+  /* controls */
+  .controls-wrapper {
+    gap: 24px;
+  }
+
+  .left,
+  .right {
+    width: 50px;
+    height: 50px;
+  }
+
+  .innerRight {
+    width: 15px;
+  }
+
+  .innerRight::after,
+  .innerRight::before {
+    width: 15px;
+    height: 2.5px;
+    right: -5px;
+  }
+
+  .innerRight::after {
+    top: -4.5px;
+  }
+
+  .innerRight::before {
+    top: 4.5px;
+  }
+
+  .innerLeft {
+    width: 15px;
+  }
+
+  .innerLeft::after,
+  .innerLeft::before {
+    width: 15px;
+    height: 2.5px;
+    left: -5px;
+  }
+
+  .innerLeft::after {
+    top: -4.5px;
+  }
+
+  .innerLeft::before {
+    top: 4.5px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-slider-container {
+    width: 1000px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .card-slider-container {
+    width: 1335px;
+  }
+}
